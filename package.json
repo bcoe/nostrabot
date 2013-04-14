@@ -1,0 +1,30 @@
+{
+  "name": "nigh-bot",
+  "version": "0.0.1",
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/index.js",
+  "author": "Ben Coe <bencoe@gmail.com>",
+  "engines": [
+    "node"
+  ],
+  "scripts": {
+    "test": "make test"
+  },
+  "description": "The end of the world is Nigh -- a twitter bot.",
+  "keywords": [
+    "twitter",
+    "end-of-world",
+    "bot"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bcoe/nigh-bot.git"
+  },
+  "dependencies": {
+    "mocha": ">=1.7.4",
+    "underscore": ">=1.4.3",
+    "redis": ">=0.8.2"
+  }
+}
