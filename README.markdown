@@ -25,3 +25,7 @@ Thus Far
     * create a corresponding test file in a test folder.
 * Create a first failing test:
     * In our case we read the entries from several RSS feeds.
+* Started by performing real request to API.
+* made tests async.
+* pulled data into fixture.
+* refactored and renamed things.

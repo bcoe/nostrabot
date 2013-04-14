@@ -1,12 +1,21 @@
 var assert = require('assert'),
-  RSSReader = require('../lib').RSSReader;
+  RSSReader = require('../lib').RSSReader,
+  fs = require('fs');
 
-suite('nigh-bot', function() {
-  test('getItems should return an array of current news items', function() {
-    var rssreader = new RSSReader();
+suite('nigh-bot', function(done) {
+  test('#getArticles should return an array of articles from RSS feed', function(done) {
+    var rssreader = new RSSReader(),
+      article = fs.readFileSync('./test/fixtures/fox.rss').toString();
+
+    // Return our fixture rather than connecting to
+    // the real RSS feed.
+    rssreader._getRawFeed = function(callback) {
+      callback(null, article);
+    };
     
-    rssreader.getItems(function(items) {
-      assert.equal(items[0].title, "KELSEY'S LAW PUSH: Could Cellphone Companies Save Lives?");
+    rssreader.getArticles(function(err, articles) {
+      assert.equal(articles[0].title, "KELSEY'S LAW PUSH: Could Cellphone Companies Save Lives?");
+      done();
     });
 
   });
