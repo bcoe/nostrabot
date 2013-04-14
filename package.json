@@ -25,6 +25,8 @@
   "dependencies": {
     "mocha": ">=1.7.4",
     "underscore": ">=1.4.3",
-    "redis": ">=0.8.2"
+    "redis": ">=0.8.2",
+    "sinon": ">=1.6.0",
+    "jdistiller": ">=1.1.3"
   }
 }
