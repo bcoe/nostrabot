@@ -2,7 +2,7 @@ var assert = require('assert'),
   RSSReader = require('../lib').RSSReader,
   fs = require('fs');
 
-describe('RSSReader', function(done) {
+describe('RSSReader', function() {
   describe('#getArticles', function() {
     
     it("should return an array of articles from an RSS feed", function(done) {
