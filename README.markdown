@@ -1,7 +1,7 @@
-Nigh-Bot
+Nostrabot
 ========
 
-The end of the world is Nigh, and Nigh-Bot is tweeting about it.
+The end of the world is Nigh, and Nostrabot is tweeting about it.
 
 Design
 ------
