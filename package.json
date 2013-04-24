@@ -27,6 +27,7 @@
     "underscore": ">=1.4.3",
     "redis": ">=0.8.2",
     "feedparser": ">=0.15.0",
-    "request": ">=2.9.203"
+    "request": ">=2.9.203",
+    "sinon": ">=1.6.0"
   }
 }
