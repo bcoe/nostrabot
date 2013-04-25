@@ -9,11 +9,15 @@ describe('RSSReader', function() {
 
     it('should call #readFeed for each source in feeds', function(done) {
       var rssreader = new RSSReader({
-        feedUrls: ['http://example.com/foo.rss', 'http://example.com/bar.rss']
-      });
+          feedUrls: ['http://example.com/foo.rss', 'http://example.com/bar.rss']
+        }),
+        fakeNewsArticle = {
+          title: 'Fake News',
+          desciption: 'Hey, I am fake news!'
+        };
 
       // mock the readFeed method on our RSS reader using sinon.
-      rssreader.readFeed = sinon.mock().callsArgWith(1, [{}]).twice();
+      rssreader.readFeed = sinon.mock().callsArgWith(1, [fakeNewsArticle]).twice();
 
       rssreader.readAllFeeds(function(err, articles) {
         assert.equal(articles.length, 2);
