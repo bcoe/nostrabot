@@ -12,8 +12,8 @@ describe('RSSReader', function() {
           feedUrls: ['http://example.com/foo.rss', 'http://example.com/bar.rss']
         }),
         fakeNewsArticle = {
-          title: 'Fake News',
-          desciption: 'Hey, I am fake news!'
+          title: 'Pandas at it Once Again',
+          desciption: 'West Plymouth County native claims that the Pandas are at it once again.'
         };
 
       // mock the readFeed method on our RSS reader using sinon.
