@@ -7,7 +7,7 @@ describe('RSSReader', function() {
 
   describe('#readAllFeeds', function() {
 
-    it('should call #readFeed for each source in feeds', function(done) {
+    it('should call #readFeed for each feed', function(done) {
       var rssreader = new RSSReader({
           feedUrls: ['http://example.com/foo.rss', 'http://example.com/bar.rss']
         }),
