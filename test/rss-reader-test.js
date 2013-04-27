@@ -17,7 +17,7 @@ describe('RSSReader', function() {
         };
 
       // mock the readFeed method on our RSS reader using sinon.
-      rssreader.readFeed = sinon.mock().callsArgWith(1, [fakeNewsArticle]).twice();
+      rssreader.readFeed = sinon.mock().callsArgWith(1, null, [fakeNewsArticle]).twice();
 
       rssreader.readAllFeeds(function(err, articles) {
         assert.equal(articles.length, 2);
@@ -42,8 +42,8 @@ describe('RSSReader', function() {
       };
       
       rssreader.readAllFeeds(function(err, articles) {
-        assert.equal(articles[0].title, "Arwa Damon: Freeze-frame moments");
-        assert.equal(articles[articles.length - 1].title, "Adorable Alert: Newborn Pups");
+        assert.equal(articles[0].title, "KELSEY'S LAW PUSH: Could Cellphone Companies Save Lives?");
+        assert.equal(articles[articles.length - 1].title, "Kidnapped family released");
         done();
       });
     });
