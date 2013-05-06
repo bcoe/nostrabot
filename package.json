@@ -28,6 +28,7 @@
     "mocha": ">=1.7.4",
     "underscore": ">=1.4.3",
     "redis": ">=0.8.2",
+    "redis-url": "0.1.0",
     "feedparser": ">=0.15.0",
     "request": ">=2.9.203",
     "sinon": ">=1.6.0",

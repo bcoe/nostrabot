@@ -69,7 +69,7 @@ if (argv.choose) {
 
     });
 
-  }, 300 * 1000) // tweet once every 5 minutes.
+  }, 15 * 1000) // tweet once every 5 minutes.
 } else {
   console.log(optimist.help());
 }
