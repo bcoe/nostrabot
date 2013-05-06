@@ -1,10 +1,12 @@
 {
-  "name": "nigh-bot",
+  "name": "nostrabot",
   "version": "0.0.1",
   "directories": {
-    "lib": "./lib"
+    "lib": "./lib",
+    "bin": "./bin"
   },
   "main": "./lib/index.js",
+  "bin": "./bin/nostrabot.js",
   "author": "Ben Coe <bencoe@gmail.com>",
   "engines": [
     "node"
@@ -30,6 +32,7 @@
     "request": ">=2.9.203",
     "sinon": ">=1.6.0",
     "async": ">=0.2.7",
-    "twitter": ">=0.1.18"
+    "twitter": ">=0.1.18",
+    "optimist": ">=0.3.4"
   }
 }

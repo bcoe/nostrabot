@@ -6,8 +6,8 @@ var assert = require('assert'),
 describe('StoryChooser', function() {
   describe('#chooseStory', function() {
 
-    before(function() {
-      client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+    beforeEach(function() {
+      var client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
       client.del('test_stories_published');
     });
 
@@ -29,12 +29,31 @@ describe('StoryChooser', function() {
     });
 
     it('should not allow the same story to be published twice', function(done) {
+      var storyChooser = new StoryChooser({
+        environment: 'test'
+      })
+      
+      storyChooser.chooseStory([{title: 'nuclear war korea'}], function(chosenStory) {
+        
+        // should choose the story for publication the first time.
+        assert.equal('nuclear war korea', chosenStory.title)
+        
+        // should not choose the story for publication the second time.
+        storyChooser.chooseStory([{title: 'nuclear war korea'}], function(chosenStory) {
+          assert.equal(undefined, chosenStory);
+          done();
+        });
+
+      });
+    });
+
+   /* it('should rank stories higher that match multiple keywords', function(done) {
       done();
     });
 
-    it('should rank stories higher that match multiple keywords', function(done) {
+    it('should rank stories higher that match keywords and have shorter titles', function(done) {
       done();
-    });
+    });*/
 
   });
 });

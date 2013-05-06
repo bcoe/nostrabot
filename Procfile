@@ -1,0 +1,1 @@
+nostrabot: node ./bin/nostrabot.js -d
