@@ -1,1 +1,1 @@
-nostrabot: node ./bin/nostrabot.js -d
+nostrabot: node ./bin/nostrabot.js --daemon

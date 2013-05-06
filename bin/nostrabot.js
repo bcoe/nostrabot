@@ -19,9 +19,10 @@ var argv = optimist
   ")
   .argv;
 
-if (argv.choose) {
-  console.log('Grabbing stories from RSS feeds...');
-  new RSSReader().readAllFeeds(function(err, stories) {
+// publish story method used by both daemon and single
+// run of twitter bot.
+function publishStory(rssReader, storyChooser, tweeter) {
+  rssReader.readAllFeeds(function(err, stories) {
     
     if (err) {
       console.log('an error occurred', err);
@@ -31,45 +32,33 @@ if (argv.choose) {
     console.log('found ', stories.length, 'articles.');
 
     console.log('finding candidate story to publish.')
-    new StoryChooser().chooseStory(stories, function(story) {
+    storyChooser.chooseStory(stories, function(story) {
       if (story) {
         console.log('found story', story.title);
-        new Tweeter().tweetArticle(story);
+        tweeter.tweetArticle(story);
       } else {
         console.log('no story found.')
       }
     });
 
   });
-} else if (argv.daemon) {
+}
+
+if (argv.choose) { // Publish a single story for testing purposes.
+  var rssReader = new RSSReader(),
+    storyChooser = new StoryChooser(),
+    tweeter = new Tweeter();
+
+  publishStory(rssReader, storyChooser, tweeter);
+
+} else if (argv.daemon) { // start a daemon that publishes stories.
   var rssReader = new RSSReader(),
     storyChooser = new StoryChooser(),
     tweeter = new Tweeter();
 
   setInterval(function() {
-
-    rssReader.readAllFeeds(function(err, stories) {
-      
-      if (err) {
-        console.log('an error occurred', err);
-        return;
-      }
-
-      console.log('found ', stories.length, 'articles.');
-
-      console.log('finding candidate story to publish.')
-      storyChooser.chooseStory(stories, function(story) {
-        if (story) {
-          console.log('found story', story.title);
-          tweeter.tweetArticle(story);
-        } else {
-          console.log('no story found.')
-        }
-      });
-
-    });
-
-  }, 15 * 1000) // tweet once every 5 minutes.
+    publishStory(rssReader, storyChooser, tweeter);
+  }, 300 * 1000) // tweet once every 5 minutes.
 } else {
   console.log(optimist.help());
 }
