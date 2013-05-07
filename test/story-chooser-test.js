@@ -47,13 +47,5 @@ describe('StoryChooser', function() {
       });
     });
 
-   /* it('should rank stories higher that match multiple keywords', function(done) {
-      done();
-    });
-
-    it('should rank stories higher that match keywords and have shorter titles', function(done) {
-      done();
-    });*/
-
   });
 });
